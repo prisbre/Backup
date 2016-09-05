@@ -1,0 +1,17 @@
+{
+	"bold_folder_labels": true,
+	"caret_extra_bottom": 2,
+	"caret_extra_width": 3,
+	"caret_extre_top": 2,
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"font_size": 12,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"save_on_focus_lost": true,
+	"word_wrap": "disable"
+}

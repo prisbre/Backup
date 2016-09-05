@@ -1,0 +1,5 @@
+{
+	"auto_save_delay_in_seconds": 10,
+	"auto_save_backup": true,
+  	"auto_save_backup_suffix": "autosave"
+}

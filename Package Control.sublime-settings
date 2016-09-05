@@ -1,0 +1,32 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"1337 Color Scheme",
+		"AdvancedNewFile",
+		"Alignment",
+		"AngularJS",
+		"AngularJS Snippets",
+		"Auto Fold",
+		"auto-save",
+		"AutoFileName",
+		"BracketHighlighter",
+		"ColorPicker",
+		"Emmet",
+		"Package Control",
+		"Package Syncing",
+		"SCSS",
+		"SCSS Snippets",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-jshint",
+		"SublimeLinter-jsxhint",
+		"TypeScript",
+		"TypescriptCompletion"
+	]
+}
