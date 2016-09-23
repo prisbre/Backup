@@ -3,31 +3,33 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 @Component({
     selector: "vote",
     template: `
-        <div class="container" (click)="userVote()">
-            <div class="btn">
-            <span class="glyphicon glyphicon-menu-up" id="up" 
-                [class.active]="upVote"></span>
+        <div class="container"
+            (click)="userVote($event)">
+            <div class="btn btn-default"
+                [class.active]="vote === 1">
+                <i class="glyphicon glyphicon-menu-up" id="up"></i>
             </div>
-            <span class="number">{{totalVotes}}</span>
-            <div class="btn">
-            <span class="glyphicon glyphicon-menu-down" id="down"
-                [class.active]="downVote"></span>
+            <div class="number">{{totalVotes + vote}}</div>
+            <div class="btn btn-default"
+                [class.active]="vote === -1">
+                <i class="glyphicon glyphicon-menu-down" id="down"></i>
             </div>
         </div>`,
     styles: [`
+        * {
+            margin: 0;
+            padding: 0;
+        }
         .container {
             display: block;
-            width: 40px;
-            height: auto;
+            width: 42px;
         }
         .btn {
-            width: 100%;
+            width: 40px;
             height: 40px;
             background-color: #ddd;
             border-radius: 5px;
-            margin: 2px 0;
-            text-align: center;
-            line-height: 40px;
+            margin: 1px;
         }
         .glyphicon {            
             color: #bbb;            
@@ -36,16 +38,20 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
             text-align: center;
         }
         .number {
-            width: 100%;
+            width: 40px;
             height: 60px;
+            background-color: #ddd;
             font-size: 14px;
             font-weight: bold;
             line-height: 60px;
             text-align: center;
-            background-color: #ddd;
+            border-radius: 5px;
+            margin: 1px;
+            
         }
+        .btn:hover,
         .active {
-            color: lightblue;
+            background-color: #99ccff;
         }
     `]
 
@@ -53,40 +59,27 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 
 export class VoteComponent {
     @Input() totalVotes: number = 0;
-    @Input() vote: number = 0;
+    @Input("userVote: vote") vote: number = 0;
     @Output() beVoted: EventEmitter<{}> = new EventEmitter();
 
-    upVote: boolean = this.vote === 1 ? true : false;
-    downVote: boolean = this.vote === -1 ? true : false;
-
-    // isValid(vote: number): boolean {
-    //     if (vote === 1 || vote === 0 || vote === -1) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-    activeToggle(id: string, vote: number): void {
-        if (id === "up" && this.vote === 1) {
-            this.upVote = true;
-            this.downVote = !this.upVote;
-        } else if (id === "down" && this.vote === -1) {
-            this.downVote = true;
-            this.upVote = !this.upVote;
+    // 保证投票正确、唯一
+    // 注意模板处的 totalVotes + vote
+    voteToggle(id: string, vote: number): void {
+        if (id === "up" && vote === 0) {
+            this.vote = 1;
+        } else if (id === "down" && vote === 0) {
+            this.vote = -1;
+        } else if ((id === "up" && vote === 1)
+            || (id === "down" && vote === -1)) {
+            this.vote = 0;
+        } else if ((id === "up" && vote === -1) 
+            || (id === "down" && vote === 1)) {
+            this.vote = -this.vote;
         }
     }
     
     userVote($event) {
         let id: string = $event.target.id;
-
-        if (id === "up" && this.vote !== 1) {
-            this.vote = 1;            
-        } else if (id === "down" && this.vote !== -1) {
-            this.vote = -1;
-        }
-        this.totalVotes += this.vote;  // no need to check valid now, vote = 1 | -1 | 0;
-        this.beVoted.emit({method: console.log(this.vote)});
-        this.activeToggle(id, this.vote);
+        this.voteToggle(id, this.vote);
     }
 }

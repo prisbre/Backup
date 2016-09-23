@@ -10,10 +10,10 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core';
 })
 
 export class StarComponent {
-    @Input() isStar = false;
-    @Output() beClicked = new EventEmitter();
+    @Input() isStar: boolean = false;
+    @Output() beClicked: EventEmitter<{}> = new EventEmitter();
 
-    onClick() {
+    onClick(): void {
         console.log('Click');
         this.isStar = !this.isStar;
         this.beClicked.emit({newvalue: this.isStar});
