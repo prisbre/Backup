@@ -9,6 +9,7 @@ Has Modified I/O API for upper component.
 * Star icon: click to switch style between hollow and solid
 * Favorite heart icon: click to toggle highlight, change total likes
 * Voter: click upvote or downvote button, change total votes
-* Summary: a simple custom type that show configurable feature
+* Summary: a simple custom pipe that slice long string
+* Panel: a panel component ingredient with bootstrap, using css class to input data
 
 Continuous updating...

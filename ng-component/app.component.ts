@@ -3,6 +3,7 @@ import {Component} from 'angular2/core';
 import {StarComponent} from './star.component'
 import {FavoriteComponent} from './favorite.component'
 import {VoteComponent} from './vote.component'
+import {BootstrapPanel} from './bootstrap.panel.component'
 import {SummaryPipe} from './summary.pipe'
 
 @Component({
@@ -19,12 +20,20 @@ import {SummaryPipe} from './summary.pipe'
             [totalVotes]="post.totalVotes"
             (beVoted)="onVote($event)"></vote>
         <br>
-        <p>{{post.body | summary}}</p>`,
+        <bs-panel> 
+            <div class="heading">{{post.title}}</div> 
+            <div class="body">{{post.body | summary: 100}}</div>
+            <div class="body">{{post.body | summary: 100}}</div>    
+            <div class="footer">{{post.assignee?.name | uppercase}}</div>
+        </bs-panel>`,
+
+
     directives: [
         // CourseComponent,
         StarComponent,
         FavoriteComponent,
-        VoteComponent
+        VoteComponent,
+        BootstrapPanel
     ],
     pipes: [
         SummaryPipe
@@ -36,10 +45,11 @@ export class AppComponent {
         vote: 1
     }
     post: Object = {
-        title: "Title",
+        title: "Little Title Big Big Ball",
         isStar: true,
         totalLikes: 1000,
         totalVotes: 1802,
+        assignee: {name: "John Gates"},
         body: `Non minim adipisicing laborum reprehenderit excepteur quis irure minim laborum ut. Eu minim ea magna sint. Dolor aliqua ad aliquip officia nulla. Id voluptate velit quis incididunt enim ea esse. Officia exercitation sit exercitation ea in esse nisi deserunt aute cillum aute officia amet. Pariatur occaecat do tempor laborum. Ut adipisicing veniam proident commodo ex laborum veniam commodo incididunt aute cupidatat mollit consectetur elit.`
 
     }
