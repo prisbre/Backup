@@ -7,6 +7,7 @@ import {BootstrapPanel} from './bootstrap.panel.component'
 import {SummaryPipe} from './summary.pipe'
 import {ZippyComponent} from './zippy.component'
 import {ContactFormComponent} from './contact-form.component'
+import {SignUpFormComponent} from './signup-form.t-d.component'
 
 @Component({
     selector: 'my-app',
@@ -31,7 +32,8 @@ import {ContactFormComponent} from './contact-form.component'
         <zippy class="zippy-title" [title]="post.title">
             {{post.body}}
         </zippy>
-        <contact-form></contact-form>`,
+        <contact-form></contact-form>
+        <signup-form></signup-form>`,
 
 
     directives: [
@@ -41,7 +43,8 @@ import {ContactFormComponent} from './contact-form.component'
         VoteComponent,
         BootstrapPanel,
         ZippyComponent,
-        ContactFormComponent
+        ContactFormComponent,
+        SignUpFormComponent
     ],
     pipes: [
         SummaryPipe
