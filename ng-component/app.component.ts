@@ -5,6 +5,8 @@ import {FavoriteComponent} from './favorite.component'
 import {VoteComponent} from './vote.component'
 import {BootstrapPanel} from './bootstrap.panel.component'
 import {SummaryPipe} from './summary.pipe'
+import {ZippyComponent} from './zippy.component'
+import {ContactFormComponent} from './contact-form.component'
 
 @Component({
     selector: 'my-app',
@@ -25,7 +27,11 @@ import {SummaryPipe} from './summary.pipe'
             <div class="body">{{post.body | summary: 100}}</div>
             <div class="body">{{post.body | summary: 100}}</div>    
             <div class="footer">{{post.assignee?.name | uppercase}}</div>
-        </bs-panel>`,
+        </bs-panel>
+        <zippy class="zippy-title" [title]="post.title">
+            {{post.body}}
+        </zippy>
+        <contact-form></contact-form>`,
 
 
     directives: [
@@ -33,7 +39,9 @@ import {SummaryPipe} from './summary.pipe'
         StarComponent,
         FavoriteComponent,
         VoteComponent,
-        BootstrapPanel
+        BootstrapPanel,
+        ZippyComponent,
+        ContactFormComponent
     ],
     pipes: [
         SummaryPipe
