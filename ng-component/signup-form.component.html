@@ -1,0 +1,34 @@
+<!-- explicily tell Angular to use custom control -->
+<form [ngFormModel]="form" (ngSubmit)="signup()"> 
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+            id="username"
+            type="text"
+            class="form-control"
+            ngControl="username"
+            #username="ngForm"> 
+            <!-- simplify *ngIf="!form.controls['username'].valid" -->
+        <div *ngIf="username.touched && username.errors">
+            <div 
+                *ngIf="username.errors.required" 
+                class="alert alert-danger">Username is Require</div>
+            <div 
+                *ngIf="username.errors.cannotContainSpace" 
+                class="alert alert-danger">Username cannot contain space</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+            id="password" 
+            type="text" 
+            class="form-control"
+            ngControl="password"
+            #password="ngForm">
+        <div 
+            *ngIf="password.touched && !password.valid" 
+            class="alert alert-danger">Password is Require</div>
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>

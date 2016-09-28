@@ -13,5 +13,7 @@ Has Modified I/O API for upper component.
 * Panel: panel component ingredient with bootstrap, using css class to input data
 * Zippy: accordion panel component, wrapping data and inserting into ng-content tag
 * ContactForm: template-driven form component, showing specific validation errors
+* SignUpForm: module-driven form component, used custom control group, has asynchronize feature
+* UsernameValidator: custom validator that control field validation
 
 Continuous updating...
