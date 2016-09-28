@@ -17,12 +17,12 @@ export class SignUpFormComponent {
                 Validators.compose([
                     Validators.required,
                     UsernameValidators.cannotContainSpace
-                ])
+                ]),
+                UsernameValidators.shouldBeUnique
             ],
             password: ['', Validators.required]
         })
     };
-
     // Rewrite the following code in more compact way
     // form = new ControlGroup({
     //     username: new Control('', Validators.required),
