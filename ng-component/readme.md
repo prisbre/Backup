@@ -9,7 +9,9 @@ Has Modified I/O API for upper component.
 * Star icon: click to switch style between hollow and solid
 * Favorite heart icon: click to toggle highlight, change total likes
 * Voter: click upvote or downvote button, change total votes
-* Summary: a simple custom pipe that slice long string
-* Panel: a panel component ingredient with bootstrap, using css class to input data
+* Summary: simple custom pipe that slice long string
+* Panel: panel component ingredient with bootstrap, using css class to input data
+* Zippy: accordion panel component, wrapping data and inserting into ng-content tag
+* ContactForm: template-driven form component, showing specific validation errors
 
 Continuous updating...

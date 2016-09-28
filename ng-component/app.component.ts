@@ -7,7 +7,7 @@ import {BootstrapPanel} from './bootstrap.panel.component'
 import {SummaryPipe} from './summary.pipe'
 import {ZippyComponent} from './zippy.component'
 import {ContactFormComponent} from './contact-form.component'
-import {SignUpFormComponent} from './signup-form.t-d.component'
+import {SignUpFormComponent} from './signup-form.td.component'
 
 @Component({
     selector: 'my-app',
@@ -32,7 +32,9 @@ import {SignUpFormComponent} from './signup-form.t-d.component'
         <zippy class="zippy-title" [title]="post.title">
             {{post.body}}
         </zippy>
+        <hr>
         <contact-form></contact-form>
+        <hr>
         <signup-form></signup-form>`,
 
 
