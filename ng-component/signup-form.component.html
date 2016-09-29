@@ -1,5 +1,5 @@
 <!-- explicily tell Angular to use custom control -->
-<form [ngFormModel]="form" (ngSubmit)="signup()"> 
+<form [ngFormModel]="form" (ngSubmit)="signup()" > 
     <div class="form-group">
         <label for="username">Username</label>
         <input 
@@ -7,31 +7,48 @@
             type="text"
             class="form-control"
             ngControl="username"
-            #username="ngForm"> 
-            <!-- simplify *ngIf="!form.controls['username'].valid" -->
+            #username="ngForm"
+            (click)="onClick(username)"> 
+
+        <div 
+            *ngIf="username.control.pending" 
+            class="alert">Checking result is loading...</div>
+        <!-- simplify *ngIf="!form.controls['username'].valid" -->
         <div *ngIf="username.touched && username.errors">
             <div 
                 *ngIf="username.errors.required" 
                 class="alert alert-danger">Username is Require.</div>
             <div 
                 *ngIf="username.errors.cannotContainSpace" 
-                class="alert alert-danger">Username cannot contain space.</div>
+                class="alert alert-danger">Username cannot contain space</div>
             <div 
                 *ngIf="username.errors.shouldBeUnique" 
                 class="alert alert-danger">Username has already taken.</div>
+            <div 
+                *ngIf="username.errors.invalidLogin" 
+                class="alert alert-danger">Username or password is invalid.</div>
+            
         </div>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input 
             id="password" 
-            type="text" 
+            type="password" 
             class="form-control"
             ngControl="password"
-            #password="ngForm">
-        <div 
-            *ngIf="password.touched && !password.valid" 
-            class="alert alert-danger">Password is Require.</div>
+            #password="ngForm"
+            (click)="onClick(password)">
+        <div *ngIf="password.touched && password.errors">
+            <div 
+                *ngIf="password.errors.required" 
+                class="alert alert-danger">Password is Required.</div>
+            <!--<div 
+                *ngIf="password.errors.minLength" 
+                class="alert alert-danger">Password is at least
+                {{password.errors.minlength.requiredLength}} characters long.</div>-->
+
+        </div>
     </div>
-    <button class="btn btn-primary" type="submit">Sign Up</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Sign Up</button>
 </form>

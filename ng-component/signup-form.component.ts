@@ -20,7 +20,14 @@ export class SignUpFormComponent {
                 ]),
                 UsernameValidators.shouldBeUnique
             ],
-            password: ['', Validators.required]
+            password: [
+                '', 
+                Validators.compose([
+                    Validators.required,
+                    // Validators.minLength(6),
+                    UsernameValidators.cannotContainSpace
+                ]),
+            ]
         })
     };
     // Rewrite the following code in more compact way
@@ -29,9 +36,16 @@ export class SignUpFormComponent {
     //     password: new Control('', Validators.required)
     // });
 
-
+    onClick(e) {
+        console.log(e);
+    }
 
     signup() {
-        console.log(this.form.value)
+        this.form.find('username').setErrors({
+            invalidLogin: true
+        });
+
+        console.log(this.form.value);
+        console.log(this.form);
     };
 }
