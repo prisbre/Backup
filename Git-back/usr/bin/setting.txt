@@ -1,5 +1,8 @@
 https://classroom.udacity.com/courses/ud775/lessons/2980038599/concepts/33417185870923#
 
-git config --global core.editor "'C:/Program Files/Sublime Text 2/sublime_text.exe' -n -w"
+git config --global core.editor "'D:/Program Files/Sublime Text 2/sublime_text.exe' -n -w"
 git config --global push.default upstream
 git config --global merge.conflictstyle diff3
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
