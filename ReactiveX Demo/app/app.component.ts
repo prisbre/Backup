@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import {Component} from 'angular2/core';
+import {Component, OnInit, JSONP_PROVIDERS} from 'angular2/core';
 // strip down version of  Observable by Angular team
 // import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/operator/debounceTime';
@@ -8,6 +8,9 @@ import {Component} from 'angular2/core';
 import {Observable} from 'rxjs/Rx';
 // for best practice
 import {FormBuilder, ControlGroup} from 'angular2/common';
+// inject service
+import {PostService} from './post.service';
+import {HTTP_PROVIDERS, Headers, RequestOptions} from 'angular2/http';
 
 @Component({
     selector: 'my-app',
@@ -16,10 +19,16 @@ import {FormBuilder, ControlGroup} from 'angular2/common';
             <input id="search" type="text" class="form-control"
                 ngControl="search">
             <!-- <div class="btn btn-primary" (click)="showDates()">button</div> -->
+            
         </form>
-    `
+    `,
+    providers: [
+        PostService,
+        HTTP_PROVIDERS,
+        JSONP_PROVIDERS
+    ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     // constructor(){
         // Callback Hell version
         // var debounced = _.debounce(function(text) {
@@ -58,9 +67,10 @@ export class AppComponent {
         // keyups.subscribe(data => console.log(data));      
     // }
 
-    // Angular2 best practice version 
+    // Angular2 best practice version in property binding 
     form: ControlGroup;
-    constructor(fb: FormBuilder) {
+    headers: Headers;
+    constructor(fb: FormBuilder, private _postService: PostService) {
         this.form = fb.group({
             search: []
         })
@@ -76,7 +86,21 @@ export class AppComponent {
                 return Observable.fromPromise(promise);
             })
             .subscribe(x => console.log(x));
+
+        // CORS include JSONP_PROVIDERS
+        let headers = new Headers({
+            'key': 'value'
+        });
+        let options = new RequestOptions({headers: headers});
+        http.post(url, options);
+    
     }
+
+    ngOnInit() {
+         this._postService.getPosts()
+            .subscribe(post => console.log(post[0].body));
+    }
+    
     
 
 
