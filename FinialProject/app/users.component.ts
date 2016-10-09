@@ -13,7 +13,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr *ngFor="let user of userList">
+            <tr *ngFor="#user of userList">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td><i class="glyphicon glyphicon-edit"></i></td>
@@ -29,8 +29,13 @@ export class UsersComponent implements OnInit {
 
     ngOnInit() {
         this._users.getUsers()
-            .subscribe(data => {
-                this.userList = data;
-            })
+            .retry(3)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    this.userList = data;
+                },
+                error => console.log(error)
+            )
     }
 }
