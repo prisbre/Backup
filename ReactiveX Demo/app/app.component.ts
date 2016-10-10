@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import {Component, OnInit, JSONP_PROVIDERS} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 // strip down version of  Observable by Angular team
 // import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/operator/debounceTime';
@@ -12,20 +12,24 @@ import {FormBuilder, ControlGroup} from 'angular2/common';
 import {PostService} from './post.service';
 import {HTTP_PROVIDERS, Headers, RequestOptions} from 'angular2/http';
 
+// import {JSONP_PROVIDERS} from 'angular2/core';
+
 @Component({
     selector: 'my-app',
     template: `
         <form [ngFormModel]="form">
             <input id="search" type="text" class="form-control"
                 ngControl="search">
-            <!-- <div class="btn btn-primary" (click)="showDates()">button</div> -->
+            <br>
+            <hr>
+            <div class="btn btn-primary" (click)="test()">Test Button</div>
             
         </form>
     `,
     providers: [
         PostService,
         HTTP_PROVIDERS,
-        JSONP_PROVIDERS
+        // JSONP_PROVIDERS
     ]
 })
 export class AppComponent implements OnInit {
@@ -87,12 +91,12 @@ export class AppComponent implements OnInit {
             })
             .subscribe(x => console.log(x));
 
-        // CORS include JSONP_PROVIDERS
-        let headers = new Headers({
-            'key': 'value'
-        });
-        let options = new RequestOptions({headers: headers});
-        http.post(url, options);
+        // // CORS include JSONP_PROVIDERS
+        // let headers = new Headers({
+        //     'key': 'value'
+        // });
+        // let options = new RequestOptions({headers: headers});
+        // http.post(url, options);
     
     }
 
@@ -102,7 +106,11 @@ export class AppComponent implements OnInit {
     }
     
     
-
+    test() {
+        // see the difference between stripdown and origin version in console
+        let a = new Observable();
+        console.log(a);
+    }
 
 
 
