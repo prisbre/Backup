@@ -1,11 +1,16 @@
 import {Component, OnInit} from 'angular2/core';
 import {UserService} from './user.service';
-import {HTTP_PROVIDERS} from 'angular2/http';    
+import {HTTP_PROVIDERS} from 'angular2/http';
+import {RouterLink} from 'angular2/router';
+import {AddUserFormComponent} from './add-user-form.component';    
 
 @Component({
     selector: 'users',
     template: `
         <h1>Users</h1>
+        <div>
+            <a class="btn btn-primary" [routerLink]="['AddUserForm']">Add User</a>
+        </div>
         <div class="row">
             <div class="col-md-6 well" >
                 <table class="table table-bordered" >
@@ -30,6 +35,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
          
 
     `,
+    directives: [RouterLink],
     providers: [UserService, HTTP_PROVIDERS]
 })
 export class UsersComponent implements OnInit {
