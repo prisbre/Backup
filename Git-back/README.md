@@ -1,10 +1,9 @@
 # 在 Windows 上设置你的工作空间
-你可以在这里下载 .bash_profile_course。
 
 更改背景色
 如果不喜欢 Git Bash 的背景色为黑色，可在“颜色”选项卡下的“默认值”菜单中更改背景色。如果喜欢原来的背景色，则无需进行更改。
 
- ### 下载必要的文件
+### 下载必要的文件
 将 git-completion.bash git-prompt.sh保存在你的主目录中
 将 bash_profile 移到你的主目录中 （如果有兴趣详细了解 bash 提示符的工作方式，请参阅[此页](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)。）
 
