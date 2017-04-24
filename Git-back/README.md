@@ -20,5 +20,13 @@ alias subl="C:/Program\ Files/Sublime\ Text\ 2/sublime_text.exe"
 重新启动 Git Bash
 必须关闭 Git Bash，然后重新打开它，这样所有更改才会生效。
 
+### 全局设置
+git config --global core.editor "'D:/Program Files/Sublime Text 2/sublime_text.exe' -n -w"
+git config --global push.default upstream
+git config --global merge.conflictstyle diff3
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
 Ref:
 https://classroom.udacity.com/courses/ud775/lessons/2980038599/concepts/33417185870923
